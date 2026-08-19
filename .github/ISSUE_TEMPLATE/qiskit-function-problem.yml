@@ -1,0 +1,91 @@
+name: Qiskit Function Problem
+description: Report a Qiskit function issue with input, output, and a concrete question.
+title: "[Qiskit]: "
+labels: ["qiskit-function-problem", "needs-triage"]
+body:
+  - type: input
+    id: contact
+    attributes:
+      label: Contact
+      description: Name, company, and email for follow-up.
+      placeholder: Jane Doe, ExampleCo, jane@example.com
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options:
+        - Normal
+        - High
+        - Urgent
+    validations:
+      required: true
+
+  - type: input
+    id: qiskit-function
+    attributes:
+      label: Qiskit Function or Module
+      description: Which Qiskit function, class, module, or workflow is involved?
+      placeholder: qiskit.transpile, Estimator, SparsePauliOp, QuantumCircuit...
+    validations:
+      required: true
+
+  - type: textarea
+    id: input
+    attributes:
+      label: Input
+      description: Paste the smallest input that reproduces the behavior.
+      render: python
+    validations:
+      required: true
+
+  - type: textarea
+    id: output
+    attributes:
+      label: Output or Error
+      description: Paste the observed output, traceback, logs, or wrong result.
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+      description: What do you need the researcher to answer?
+      placeholder: Explain what is unclear, unexpected, or blocking your work.
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Add package versions and runtime context.
+      value: |
+        - Python:
+        - Qiskit:
+        - OS:
+        - Backend/simulator:
+    validations:
+      required: false
+
+  - type: upload
+    id: attachments
+    attributes:
+      label: Input Files, Logs, or Screenshots
+      description: Upload scripts, configs, notebooks, logs, zipped repro files, plots, or screenshots.
+    validations:
+      required: false
+      accept: ".py,.ipynb,.json,.txt,.log,.csv,.zip,.gz,.tar.gz,.png,.jpg,.jpeg,.gif,.svg,.webp,.pdf"
+
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Submission Check
+      options:
+        - label: This ticket does not include credentials, API keys, private tokens, or production secrets.
+          required: true
+

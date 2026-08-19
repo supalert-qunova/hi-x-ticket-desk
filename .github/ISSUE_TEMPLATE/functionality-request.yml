@@ -1,0 +1,78 @@
+name: Functionality Request
+description: Request new functionality or a workflow improvement.
+title: "[Functionality]: "
+labels: ["functionality-request", "needs-triage"]
+body:
+  - type: input
+    id: contact
+    attributes:
+      label: Contact
+      description: Name, company, and email for follow-up.
+      placeholder: Jane Doe, ExampleCo, jane@example.com
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options:
+        - Normal
+        - High
+        - Urgent
+    validations:
+      required: true
+
+  - type: textarea
+    id: functionality
+    attributes:
+      label: Requested Functionality
+      description: What functionality do you want added or changed?
+      placeholder: Describe the capability, interface, output, or workflow you need.
+    validations:
+      required: true
+
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use Case or Workflow
+      description: How would this be used in practice?
+      placeholder: Who uses it, when they use it, input/output, and what problem it solves.
+    validations:
+      required: true
+
+  - type: textarea
+    id: examples
+    attributes:
+      label: Examples in Open Source or Other Software
+      description: Link to similar behavior in Qiskit, PennyLane, OpenFermion, PySCF, other software, papers, or docs.
+      placeholder: Links plus a short note about what part should be similar.
+    validations:
+      required: false
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior or API
+      description: What should the function, API, UI, or output look like?
+      render: markdown
+    validations:
+      required: true
+
+  - type: upload
+    id: references
+    attributes:
+      label: References or Screenshots
+      description: Upload mockups, screenshots, notebooks, example inputs, docs, or zipped references.
+    validations:
+      required: false
+      accept: ".py,.ipynb,.json,.txt,.log,.csv,.zip,.gz,.tar.gz,.png,.jpg,.jpeg,.gif,.svg,.webp,.pdf,.docx,.xlsx,.pptx"
+
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Submission Check
+      options:
+        - label: This ticket does not include credentials, API keys, private tokens, or production secrets.
+          required: true
+

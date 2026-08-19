@@ -1,0 +1,82 @@
+name: Technical Requirements
+description: Ask about algorithms, benchmarks, method comparisons, or resource estimates.
+title: "[Technical]: "
+labels: ["technical-requirements", "needs-triage"]
+body:
+  - type: input
+    id: contact
+    attributes:
+      label: Contact
+      description: Name, company, and email for follow-up.
+      placeholder: Jane Doe, ExampleCo, jane@example.com
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options:
+        - Normal
+        - High
+        - Urgent
+    validations:
+      required: true
+
+  - type: dropdown
+    id: request-type
+    attributes:
+      label: Request Type
+      options:
+        - Algorithm question
+        - Benchmark request
+        - Method comparison
+        - Resource estimate
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: background
+    attributes:
+      label: Background or Context
+      description: What system, workflow, paper, result, or customer scenario motivates this request?
+      placeholder: Include molecule/system, target accuracy, known constraints, and any existing result.
+    validations:
+      required: true
+
+  - type: textarea
+    id: requirement
+    attributes:
+      label: Technical Requirement or Question
+      description: What exactly do you need Tier3 to provide?
+      placeholder: Algorithm recommendation, benchmark design, baseline comparison, feasibility answer...
+    validations:
+      required: true
+
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Constraints
+      description: Add runtime, hardware, accuracy, delivery date, licensing, data, or integration constraints.
+      placeholder: Max qubits, max wall time, accepted error, preferred backend, deadline...
+    validations:
+      required: false
+
+  - type: upload
+    id: supporting-files
+    attributes:
+      label: Supporting Files
+      description: Upload papers, configs, result tables, logs, plots, screenshots, or zipped data.
+    validations:
+      required: false
+      accept: ".pdf,.docx,.xlsx,.pptx,.py,.ipynb,.json,.txt,.log,.csv,.zip,.gz,.tar.gz,.png,.jpg,.jpeg,.gif,.svg,.webp"
+
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Submission Check
+      options:
+        - label: This ticket does not include credentials, API keys, private tokens, or production secrets.
+          required: true
+

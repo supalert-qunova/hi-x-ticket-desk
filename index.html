@@ -6,7 +6,7 @@
     <title>HI-X Research Ticket Desk</title>
     <meta
       name="description"
-      content="Submit technical and research questions for HI-X Tier3 review."
+      content="Choose the right HI-X support path and submit a structured research ticket."
     >
     <style>
       :root {
@@ -186,6 +186,21 @@
         padding: 18px;
       }
 
+      .ticket-card {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .ticket-card p {
+        margin: 0;
+      }
+
+      .ticket-card .button {
+        align-self: flex-start;
+        margin-top: auto;
+      }
+
       .metric {
         display: block;
         font-size: 2rem;
@@ -256,7 +271,7 @@
     <header>
       <nav class="shell" aria-label="Primary navigation">
         <div class="brand">
-          <span class="mark" aria-hidden="true">HV</span>
+          <span class="mark" aria-hidden="true">HX</span>
           <span>HI-X Research Ticket Desk</span>
         </div>
         <div class="navlinks">
@@ -269,21 +284,22 @@
     <main class="shell">
       <section class="intro" aria-labelledby="title">
         <div>
-          <h1 id="title">Technical questions routed to Tier3 researchers.</h1>
+          <h1 id="title">Choose the right path for Tier3 research support.</h1>
           <p class="lead">
-            Submit HI-X research questions with input code, logs, plots, and screenshots.
-            Each submission becomes a private GitHub issue for triage and researcher response.
+            Start with a structured ticket type for Qiskit function problems,
+            technical requirements, or functionality requests. Each submission
+            becomes a GitHub issue for triage and researcher response.
           </p>
           <div class="actions">
             <a
               class="button primary"
-              href="https://github.com/supalert-qunova/hi-x-ticket-desk/issues/new?template=tier3-research-question.yml"
-            >Submit ticket</a>
+              href="#ticket-types"
+            >Choose category</a>
             <a class="button" href="https://github.com/supalert-qunova/hi-x-ticket-desk/issues">View queue</a>
           </div>
         </div>
 
-        <div class="matrix" aria-label="Research queue visual">
+        <div class="matrix" aria-label="Ticket category visual">
           <span class="cell hot"></span><span class="cell"></span><span class="cell good"></span><span class="cell"></span><span class="cell warn"></span><span class="cell"></span>
           <span class="cell"></span><span class="cell hot"></span><span class="cell"></span><span class="cell good"></span><span class="cell"></span><span class="cell"></span>
           <span class="cell warn"></span><span class="cell"></span><span class="cell hot"></span><span class="cell"></span><span class="cell good"></span><span class="cell"></span>
@@ -294,36 +310,48 @@
       </section>
 
       <section class="stats" aria-label="Ticket desk summary">
-        <div class="card"><span class="metric">1</span><span class="label">intake form</span></div>
-        <div class="card"><span class="metric">6</span><span class="label">required context fields</span></div>
-        <div class="card"><span class="metric">2</span><span class="label">upload sections</span></div>
+        <div class="card"><span class="metric">3</span><span class="label">intake paths</span></div>
+        <div class="card"><span class="metric">3</span><span class="label">structured forms</span></div>
+        <div class="card"><span class="metric">1</span><span class="label">upload section per form</span></div>
         <div class="card"><span class="metric">0</span><span class="label">product code required</span></div>
       </section>
 
-      <h2>Submission Categories</h2>
-      <section class="sections" aria-label="Submission categories">
-        <article class="card">
-          <span class="tag">Repro</span>
-          <h3>Input code and logs</h3>
-          <p>Scripts, configs, notebooks, command output, and zipped minimal reproductions.</p>
+      <h2 id="ticket-types">Choose Ticket Type</h2>
+      <section class="sections" aria-label="Ticket categories">
+        <article class="card ticket-card">
+          <span class="tag">Qiskit</span>
+          <h3>Qiskit Function Problem</h3>
+          <p>For function/module behavior where input, output or error, and a concrete question are available.</p>
+          <a
+            class="button primary"
+            href="https://github.com/supalert-qunova/hi-x-ticket-desk/issues/new?template=qiskit-function-problem.yml"
+          >Open form</a>
         </article>
-        <article class="card">
-          <span class="tag">Evidence</span>
-          <h3>Plots and screenshots</h3>
-          <p>Energy curves, convergence plots, UI captures, diagrams, and error images.</p>
+        <article class="card ticket-card">
+          <span class="tag">Research</span>
+          <h3>Technical Requirements</h3>
+          <p>For algorithm questions, benchmark requests, method comparisons, resource estimates, and constraints.</p>
+          <a
+            class="button primary"
+            href="https://github.com/supalert-qunova/hi-x-ticket-desk/issues/new?template=technical-requirements.yml"
+          >Open form</a>
         </article>
-        <article class="card">
-          <span class="tag">Decision</span>
-          <h3>Research answer needed</h3>
-          <p>The expected answer, recommendation, baseline, or interpretation needed from Tier3.</p>
+        <article class="card ticket-card">
+          <span class="tag">Feature</span>
+          <h3>Functionality Request</h3>
+          <p>For requested functionality, usage workflow, comparable examples, and expected behavior or API.</p>
+          <a
+            class="button primary"
+            href="https://github.com/supalert-qunova/hi-x-ticket-desk/issues/new?template=functionality-request.yml"
+          >Open form</a>
         </article>
       </section>
 
       <h2>Workflow</h2>
       <section class="card">
         <ol>
-          <li>Client opens a ticket with the GitHub issue form.</li>
-          <li>Triage labels the issue and asks for missing context when needed.</li>
+          <li>Client chooses a ticket type and completes the matching GitHub issue form.</li>
+          <li>Triage uses labels and asks for missing context when needed.</li>
           <li>Tier3 researcher replies in the issue thread.</li>
           <li>The ticket is closed when the answer is delivered.</li>
         </ol>
