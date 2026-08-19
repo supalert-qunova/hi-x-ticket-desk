@@ -1,4 +1,4 @@
-# HI-VQE Research Ticket Desk
+# HI-X Research Ticket Desk
 
 This repository is only for technical and research support tickets. It is not tied to a product codebase.
 
@@ -15,3 +15,6 @@ This repository is only for technical and research support tickets. It is not ti
 - Do not upload credentials, API keys, private tokens, or production secrets.
 - If the input is confidential, mark it in the form so access can be handled deliberately.
 
+## GitHub Pages
+
+Use **Settings -> Pages -> Deploy from a branch -> main -> root** to publish `index.html`.

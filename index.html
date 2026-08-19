@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HI-X Research Ticket Desk</title>
+    <meta
+      name="description"
+      content="Submit technical and research questions for HI-X Tier3 review."
+    >
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #0b1117;
+        --panel: #121a22;
+        --panel-2: #17222c;
+        --text: #edf3f7;
+        --muted: #9cadba;
+        --line: #2b3a47;
+        --blue: #6dc8ff;
+        --green: #8fdc9f;
+        --gold: #f2c46d;
+        --red: #ff8a8a;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font: 16px/1.55 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .shell {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      header {
+        border-bottom: 1px solid var(--line);
+      }
+
+      nav {
+        display: flex;
+        min-height: 72px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 760;
+        letter-spacing: 0;
+      }
+
+      .mark {
+        display: grid;
+        width: 34px;
+        height: 34px;
+        place-items: center;
+        border: 1px solid var(--line);
+        background: var(--panel);
+        color: var(--blue);
+        font-weight: 800;
+      }
+
+      .navlinks {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      main {
+        padding: 44px 0 56px;
+      }
+
+      .intro {
+        display: grid;
+        grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+        gap: 28px;
+        align-items: stretch;
+      }
+
+      h1 {
+        margin: 0;
+        max-width: 760px;
+        font-size: clamp(2.25rem, 6vw, 5.2rem);
+        line-height: 0.98;
+        letter-spacing: 0;
+      }
+
+      .lead {
+        max-width: 720px;
+        margin: 22px 0 0;
+        color: var(--muted);
+        font-size: 1.15rem;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 30px;
+      }
+
+      .button {
+        display: inline-flex;
+        min-height: 44px;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--line);
+        padding: 0 16px;
+        background: var(--panel);
+        text-decoration: none;
+        font-weight: 720;
+      }
+
+      .button.primary {
+        border-color: #2d6a8f;
+        background: #12354b;
+        color: #e7f7ff;
+      }
+
+      .matrix {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 8px;
+        min-height: 290px;
+        border: 1px solid var(--line);
+        background: var(--panel);
+        padding: 14px;
+      }
+
+      .cell {
+        min-height: 34px;
+        border: 1px solid #23313d;
+        background: #0d151d;
+      }
+
+      .cell.hot {
+        background: #17354a;
+        border-color: #356f95;
+      }
+
+      .cell.good {
+        background: #193829;
+        border-color: #397a4e;
+      }
+
+      .cell.warn {
+        background: #3b2d18;
+        border-color: #80622d;
+      }
+
+      .stats,
+      .sections {
+        display: grid;
+        gap: 14px;
+        margin-top: 28px;
+      }
+
+      .stats {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .sections {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .card {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        padding: 18px;
+      }
+
+      .metric {
+        display: block;
+        font-size: 2rem;
+        font-weight: 800;
+        line-height: 1;
+      }
+
+      .label,
+      .card p {
+        margin: 8px 0 0;
+        color: var(--muted);
+      }
+
+      h2 {
+        margin: 44px 0 16px;
+        font-size: 1.4rem;
+      }
+
+      h3 {
+        margin: 0;
+        font-size: 1rem;
+      }
+
+      .tag {
+        display: inline-flex;
+        margin-bottom: 12px;
+        color: var(--gold);
+        font-size: 0.82rem;
+        font-weight: 760;
+        text-transform: uppercase;
+      }
+
+      ol {
+        display: grid;
+        gap: 10px;
+        margin: 0;
+        padding-left: 22px;
+        color: var(--muted);
+      }
+
+      footer {
+        border-top: 1px solid var(--line);
+        padding: 22px 0;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      @media (max-width: 780px) {
+        nav,
+        .navlinks {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .intro,
+        .stats,
+        .sections {
+          grid-template-columns: 1fr;
+        }
+
+        main {
+          padding-top: 30px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="shell" aria-label="Primary navigation">
+        <div class="brand">
+          <span class="mark" aria-hidden="true">HV</span>
+          <span>HI-X Research Ticket Desk</span>
+        </div>
+        <div class="navlinks">
+          <a href="https://github.com/supalert-qunova/hi-x-ticket-desk/issues">Tickets</a>
+          <a href="https://github.com/supalert-qunova/hi-x-ticket-desk">GitHub repo</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="shell">
+      <section class="intro" aria-labelledby="title">
+        <div>
+          <h1 id="title">Technical questions routed to Tier3 researchers.</h1>
+          <p class="lead">
+            Submit HI-X research questions with input code, logs, plots, and screenshots.
+            Each submission becomes a private GitHub issue for triage and researcher response.
+          </p>
+          <div class="actions">
+            <a
+              class="button primary"
+              href="https://github.com/supalert-qunova/hi-x-ticket-desk/issues/new?template=tier3-research-question.yml"
+            >Submit ticket</a>
+            <a class="button" href="https://github.com/supalert-qunova/hi-x-ticket-desk/issues">View queue</a>
+          </div>
+        </div>
+
+        <div class="matrix" aria-label="Research queue visual">
+          <span class="cell hot"></span><span class="cell"></span><span class="cell good"></span><span class="cell"></span><span class="cell warn"></span><span class="cell"></span>
+          <span class="cell"></span><span class="cell hot"></span><span class="cell"></span><span class="cell good"></span><span class="cell"></span><span class="cell"></span>
+          <span class="cell warn"></span><span class="cell"></span><span class="cell hot"></span><span class="cell"></span><span class="cell good"></span><span class="cell"></span>
+          <span class="cell"></span><span class="cell good"></span><span class="cell"></span><span class="cell hot"></span><span class="cell"></span><span class="cell warn"></span>
+          <span class="cell hot"></span><span class="cell"></span><span class="cell"></span><span class="cell good"></span><span class="cell"></span><span class="cell"></span>
+          <span class="cell"></span><span class="cell warn"></span><span class="cell"></span><span class="cell"></span><span class="cell hot"></span><span class="cell good"></span>
+        </div>
+      </section>
+
+      <section class="stats" aria-label="Ticket desk summary">
+        <div class="card"><span class="metric">1</span><span class="label">intake form</span></div>
+        <div class="card"><span class="metric">6</span><span class="label">required context fields</span></div>
+        <div class="card"><span class="metric">2</span><span class="label">upload sections</span></div>
+        <div class="card"><span class="metric">0</span><span class="label">product code required</span></div>
+      </section>
+
+      <h2>Submission Categories</h2>
+      <section class="sections" aria-label="Submission categories">
+        <article class="card">
+          <span class="tag">Repro</span>
+          <h3>Input code and logs</h3>
+          <p>Scripts, configs, notebooks, command output, and zipped minimal reproductions.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Evidence</span>
+          <h3>Plots and screenshots</h3>
+          <p>Energy curves, convergence plots, UI captures, diagrams, and error images.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Decision</span>
+          <h3>Research answer needed</h3>
+          <p>The expected answer, recommendation, baseline, or interpretation needed from Tier3.</p>
+        </article>
+      </section>
+
+      <h2>Workflow</h2>
+      <section class="card">
+        <ol>
+          <li>Client opens a ticket with the GitHub issue form.</li>
+          <li>Triage labels the issue and asks for missing context when needed.</li>
+          <li>Tier3 researcher replies in the issue thread.</li>
+          <li>The ticket is closed when the answer is delivered.</li>
+        </ol>
+      </section>
+    </main>
+
+    <footer>
+      <div class="shell">HI-X Research Ticket Desk</div>
+    </footer>
+  </body>
+</html>
